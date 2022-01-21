@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 function Footer() {
   const router = useRouter()
   return (
-    <footer className='w-full h-64 bg-[hsl(210,7%,11%)] p-16'>
+    <footer className='w-full h-64 bg-[hsl(210,50%,5%)] p-16'>
       <div className='w-full flex justify-center space-x-2 p-4'>
         <img
           src='./icons/github.svg'
