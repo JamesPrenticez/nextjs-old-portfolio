@@ -1,5 +1,6 @@
-
+import Grid from './Grid';
 import TypeWriter from "./TypeWriter"
+
 
 function Main() {
   return (
@@ -16,18 +17,48 @@ function Main() {
       </div>
 
       {/* Two */}
-      <div className='w-full h-screen p-4'>
-        two
+      <div className='w-full h-screen flex justify-center items-center bg-pink-400'>
+        <Grid />
       </div>
 
       {/* Three */}
-      <div className='w-full h-screen inline-flex'>
-        <div className='w-1/2 h-full bg-red-500'>
+      <div className='w-full h-screen flex flex-wrap md:inline-flex'>
 
+        {/* Form */}
+        <div className='w-full md:w-1/2 p-8'>
+          <form className='' action="/">
+            <fieldset className='border border-solid border-gray-300 p-8'>
+              <legend className='text-4xl px-4'>Contact Me</legend>
+
+              <div className='pl-4 space-y-4'>
+                <label className='' for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"/>
+                <br/>
+
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname"/>
+                <br/>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"/>
+                <br/>
+
+                <button 
+                  className="btn mt-12 float-right px-12 py-4 relative border border-white uppercase font-semibold tracking-wider leading-none overflow-hidden hover:text-green-600 rounded-lg duration-500"
+                  type="submit" 
+                  value="Submit"
+                >
+                  <span className="absolute inset-0 bg-white"></span>
+                  <span className="absolute inset-0 flex justify-center items-center font-bold">Submit</span>
+                  Submit
+                </button>
+              </div>
+            </fieldset>
+            </form>
         </div>
-        <div className='w-1/2'>
-          <img className="h-full w-full" src="map.png" alt="" />
-        </div>
+
+        {/* Map */}
+        <div className='w-full md:w-1/2 bg-map bg-cover bg-center bg-no-repeat'/>
       </div>
     </main>
   )

@@ -16,6 +16,9 @@ module.exports = {
       "6xl": ['3.75rem', '4.25rem'],
       "7xl": ['4.5rem', '5.2rem'],
     },
+    backgroundImage: {
+      'map': "url('../public/map.png')",
+    },
     extend: {
       height:{
         screenNav: "calc(100vh - 4rem)",
