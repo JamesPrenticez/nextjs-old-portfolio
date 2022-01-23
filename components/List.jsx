@@ -18,15 +18,41 @@ function List() {
   }, [cardRef, data]);
 
   const add = () => {
-    let increment = data.length + 1
+    let increment = data.length
     let color = randomColor()
-    setData([...data, {id: increment, title: `${increment}`, color: `#${color}`}])
+    setData([...data, {id: increment, position: increment, title: `${color}`, color: `#${color}`}])
     //console.log(cardRef.current)
   }
 
   const subtract = () => {
-    let newData = data.filter(p => p.id != data[data.length -1].id)
+    let a = data
+    let newData = a.filter(p => p.position != a[a.length -1].position)
     setData(newData)
+  }
+
+  const shuffle = () => {
+    let list = data
+    let i = list.length -1, randomI, currentPos, randomPos
+    //While there remains elements to shuffle... works top back to 0 index
+    while(i >= 1){
+
+      randomI = Math.ceil(Math.random() * i--)
+
+      //Find a pair to swap
+      currentPos = list[i].position //current position in array
+      randomPos = list[randomI].position //find a random position another
+      
+      //Make the swap
+      list[i].position = randomPos//assign the new position 
+      list[randomI].position = currentPos//assign the old index to the element it got swapped with 
+    }
+    //update state
+    let newList = list.map(p => p.id == list[i].id ? {...p, position: list[i].position} : p)
+    setData(newList)
+  }
+
+  const sort = () => {
+    console.log("hi")
   }
 
   return (
@@ -41,10 +67,9 @@ function List() {
           id={item.id} 
           key={i} 
           ref={element => cardRef.current[i] = element} 
-          className=''
-          style={{backgroundColor: `${item.color}`}}
+          style={{width: '100%', backgroundColor: `${item.color}`, padding: "10px", marginTop: `${item.position}00px`, position:'absolute'}}
       >
-        {item.title}
+        {item.position + " " + item.title}
       </div>
     ))} 
   </>

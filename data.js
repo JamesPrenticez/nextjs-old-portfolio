@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: 0,
+    position: 0,
     title: "SelfRegulator",
     src: "/img/selfregulator.png",
     tags: ['hobby'],
@@ -8,6 +9,7 @@ export const projects = [
   },
   {
     id: 1,
+    position: 1,
     title: "ConJob",
     src: "/img/conjob.png",
     tags: ['hobby'],
@@ -15,6 +17,7 @@ export const projects = [
   },
   {
     id: 2,
+    position: 2,
     title: "Poppins Ecom Store",
     src: "/img/poppins.png",
     tags: ['hobby'],
@@ -22,6 +25,7 @@ export const projects = [
   },
   {
     id: 3,
+    position: 3,
     title: "Instagram Clone",
     src: "/img/instagram.png",
     tags: ['clone'],
@@ -29,6 +33,7 @@ export const projects = [
   },
   {
     id: 4,
+    position: 4,
     title: "Google Doc's Clone",
     src: "/img/googledocs.png",
     tags: ['clone'],
@@ -36,6 +41,7 @@ export const projects = [
   },
   {
     id: 5,
+    position: 5,
     title: "Spotify Clone",
     src: "/img/spotifyclone.png",
     tags: ['clone'],
@@ -43,6 +49,7 @@ export const projects = [
   },
   {
     id: 6,
+    position: 6,
     title: "Egyptian NFT's",
     src: "/img/egyptiannfts.png",
     tags: ['crypto'],
@@ -50,6 +57,7 @@ export const projects = [
   },
   {
     id: 7,
+    position: 7,
     title: "Tea Time",
     src: "/img/teatime.png",
     tags: ['group'],
@@ -57,6 +65,7 @@ export const projects = [
   },
   {
     id: 8,
+    position: 8,
     title: "Cryptoverse",
     src: "/img/SpotifyClone.png",
     tags: ['group'],
