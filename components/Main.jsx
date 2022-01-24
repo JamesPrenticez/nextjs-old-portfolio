@@ -1,4 +1,4 @@
-import Grid from './Grid';
+import Grid from './Card';
 import TypeWriter from "./TypeWriter"
 
 

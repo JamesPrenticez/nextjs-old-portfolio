@@ -1,8 +1,7 @@
-import React, {useLayoutEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import { animate } from 'popmotion'
 
-function Card() {
-  const [move, setMove] = useState(false)
+function Card({item, i, matrix}) {
   const ref = useRef(null)
   const lastBounds = useRef(null)
 
@@ -32,29 +31,23 @@ function Card() {
       })
     }
     lastBounds.current = bounds
-  }, [move])
-
+  }, [item.position])
 
   return (
-  <div className='w-full h-screen flex justify-center items-center bg-pink-400'>
-    <div className='w-[60vw] h-[80vh] flex'
-      style={{justifyContent: move ? 'flex-end' : 'flex-start',}}
-      >
-      {/* Box */}
       <div
-        id= "box"
-        ref= {ref}
-        onClick={() => setMove((bool) => !bool)}
+        id={item.id} 
+        key={i}
+        ref={ref}  
         style={{
-          display: 'flex',
-          width: 100,
-          height: 100,
-          background: 'blue',
+          width: '100%',
+          padding: "10px",
+          backgroundColor: `${item.color}`,
+          gridColStart: `${matrix[item.position][0]}`,
+          gridRowStart: `${matrix[item.position][1]}`,
         }}
       >
+        {item.id + " " + item.title}
       </div>
-    </div>
-  </div>
   );
 }
 
