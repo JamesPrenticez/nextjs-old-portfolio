@@ -1,4 +1,4 @@
-import Grid from './Card';
+import Grid from './Grid';
 import TypeWriter from "./TypeWriter"
 
 
@@ -17,7 +17,7 @@ function Main() {
       </div>
 
       {/* Two */}
-      <div className='w-full h-screen flex justify-center items-center bg-pink-400'>
+      <div className='text-black' >
         <Grid />
       </div>
 

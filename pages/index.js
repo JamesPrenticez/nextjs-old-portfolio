@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Grid from '../components/Grid'
+//import Grid from '../components/Grid'
 
-// import Footer from '../components/Footer'
-// import Main from '../components/Main'
+import Footer from '../components/Footer'
+import Main from '../components/Main'
 
 export default function Home() {
   return (
@@ -12,9 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Main />
-      <Footer/> */}
-      <Grid />
+      <Main />
+      <Footer/>
+      {/* <Grid /> */}
 
 
     </>

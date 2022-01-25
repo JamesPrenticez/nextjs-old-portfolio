@@ -1,56 +1,85 @@
-import React, {useLayoutEffect, useRef} from 'react';
-import { animate } from 'popmotion'
+import React, { PureComponent } from "react";
+import { Flipped, spring } from "react-flip-toolkit";
 
-function Card({item, i, matrix}) {
-  const ref = useRef(null)
-  const lastBounds = useRef(null)
+const onElementAppear = (el, index) =>
+  spring({
+    onUpdate: val => {
+      el.style.opacity = val;
+    },
+    delay: index * 50
+  });
 
-  function getInvertedTransform(startBounds, endBounds) {
-    return {
-      x: startBounds.x - endBounds.x,
-      y: startBounds.y - endBounds.y,
-      scaleX: startBounds.width / endBounds.width,
-      scaleY: startBounds.height / endBounds.height,
+const onExit = type => (el, index, removeElement) => {
+  spring({
+    config: { overshootClamping: true },
+    onUpdate: val => {
+      el.style.transform = `scale${type === "grid" ? "X" : "Y"}(${1 - val})`;
+    },
+    delay: index * 50,
+    onComplete: removeElement
+  });
+
+  return () => {
+    el.style.opacity = "";
+    removeElement();
+  };
+};
+
+const onGridExit = onExit("grid");
+const onListExit = onExit("list");
+
+class Card extends PureComponent {
+  shouldFlip = (prev, current) => {
+    if (prev.type !== current.type) {
+      return true;
     }
-  }
-
-  useLayoutEffect(() => {
-    const bounds = ref.current.getBoundingClientRect()
-    if (lastBounds.current) {
-      const invertedTransform = getInvertedTransform(lastBounds.current, bounds)
-      animate({
-        from: invertedTransform,
-        to: { x: 0, y: 0, scaleX: 1, scaleY: 1 },
-        duration: 800,
-        onUpdate: (transform) => {
-          const { x, y, scaleX, scaleY } = transform
-          const translate = `translate(${x}px, ${y}px)`
-          const scale = `scale(${scaleX}, ${scaleY})`
-          ref.current.style.transform = `${translate} ${scale}`
-        },
-      })
-    }
-    lastBounds.current = bounds
-  }, [item.position])
-
-console.log(matrix)
-
-  return (
-      <div
-        id={item.id} 
-        key={i}
-        ref={ref}  
-        style={{
-          width: '100%',
-          padding: "10px",
-          backgroundColor: `${item.color}`,
-          gridColStart: `${matrix[item.position][0]}`,
-          gridRowStart: `${matrix[item.position][1]}`,
-        }}
+    return false;
+  };
+  render() {
+    const { id, title, type, stagger, addToFilteredIds } = this.props;
+    const flipId = `item-${id}`;
+    return (
+      <Flipped
+        flipId={flipId}
+        onAppear={onElementAppear}
+        onExit={type === "grid" ? onGridExit : onListExit}
+        key={flipId}
+        stagger={stagger}
+        shouldInvert={this.shouldFlip}
       >
-        {item.id + " " + item.title}
-      </div>
-  );
+        <li className="fm-item">
+          <Flipped inverseFlipId={flipId}>
+            <div>
+              <Flipped
+                flipId={`${flipId}-content`}
+                translate
+                shouldFlip={this.shouldFlip}
+                delayUntil={flipId}
+              >
+                <div>
+                  <h3>{title}</h3>
+                  <p>{title}</p>
+                </div>
+              </Flipped>
+
+              <Flipped
+                flipId={`${flipId}-button`}
+                shouldFlip={this.shouldFlip}
+                delayUntil={flipId}
+              >
+                <button
+                  className="fm-remove"
+                  onClick={() => addToFilteredIds(id)}
+                >
+                  &times;
+                </button>
+              </Flipped>
+            </div>
+          </Flipped>
+        </li>
+      </Flipped>
+    );
+  }
 }
 
 export default Card;
