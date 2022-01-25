@@ -33,6 +33,8 @@ function Card({item, i, matrix}) {
     lastBounds.current = bounds
   }, [item.position])
 
+console.log(matrix)
+
   return (
       <div
         id={item.id} 
