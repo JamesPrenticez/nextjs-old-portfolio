@@ -36,7 +36,7 @@ class Card extends PureComponent {
     return false;
   };
   render() {
-    const { id, title, type, stagger, addToFilteredIds } = this.props;
+    const { id, title, desc, src, tags, color, type, stagger, addToFilteredIds} = this.props;
     const flipId = `item-${id}`;
     return (
       <Flipped
@@ -47,33 +47,50 @@ class Card extends PureComponent {
         stagger={stagger}
         shouldInvert={this.shouldFlip}
       >
-        <li className="fm-item">
+        {/* Card Item*/}
+        <li className="overflow-hidden block rounded-sm  bg-[#002d49] bg-opacity-80 text-white">
           <Flipped inverseFlipId={flipId}>
-            <div>
+            <div className="flex items-start justify-between h-full">
               <Flipped
                 flipId={`${flipId}-content`}
                 translate
                 shouldFlip={this.shouldFlip}
                 delayUntil={flipId}
               >
-                <div>
-                  <h3>{title}</h3>
-                  <p>{title}</p>
+                <div className="h-full w-full p-4">
+                  <div className="flex w-full px-2">
+                    {/* Small Dot */}
+                    <div className="w-4 m-2 rounded-full" style={{background: color}}></div>
+                    <h3 className="text-2xl">{title}</h3>
+                    {/* Remove Card Button [X] */}
+                    <Flipped
+                      flipId={`${flipId}-button`}
+                      shouldFlip={this.shouldFlip}
+                      delayUntil={flipId}
+                    >
+                      <button
+                        className="w-8 ml-auto bg-transparent cursor-pointer text-[2.2rem] text-red-600"
+                        onClick={() => addToFilteredIds(id)}
+                      >
+                        &times;
+                      </button>
+                    </Flipped>
+                  </div>
+  
+                  {/* Image */}
+                  <div>
+                    <img className="h-full w-full m-auto rounded-sm p-4" src='/default-image.jpg' alt="" />
+                  </div>
+
+                  {/* SubTitle */}
+                  <div className="h-[4rem] ml-4">
+                    <p className="italic pb-2 text-gray-100 font-thin">{desc}</p>
+                  </div>
+
                 </div>
               </Flipped>
 
-              <Flipped
-                flipId={`${flipId}-button`}
-                shouldFlip={this.shouldFlip}
-                delayUntil={flipId}
-              >
-                <button
-                  className="fm-remove"
-                  onClick={() => addToFilteredIds(id)}
-                >
-                  &times;
-                </button>
-              </Flipped>
+
             </div>
           </Flipped>
         </li>

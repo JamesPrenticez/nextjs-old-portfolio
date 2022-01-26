@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Flipper, Flipped } from "react-flip-toolkit";
-import Card from "./Card";
-import {data} from "../data";
+import React, { Component } from 'react';
+import { Flipper, Flipped } from 'react-flip-toolkit';
+import Card from './Card';
+import {data} from '../data';
 
 export default class Grid extends Component {
   state = {
-    type: "list",
-    sort: "asc",
+    type: 'grid',
+    sort: 'asc',
     filteredIds: [],
-    stagger: "forward",
-    spring: "noWobble"
+    stagger: 'forward',
+    spring: 'noWobble'
   };
 
   addToFilteredIds = id => {
@@ -22,167 +22,89 @@ export default class Grid extends Component {
 
   render() {
     return (
-      <div className="fm-example">
+      <div className='bg-black w-5/6 h-5/6 mt-7'>
+
+        {/* Row of Buttons */}
+        <div className='inline-flex w-full bg-black'>
+          {/* Ascending  */}
+          <button
+            className='bg-black p-4 hover:bg-gray-700'
+            type='button'
+            onClick={() => {this.setState({sort: 'asc'})}}
+          >
+            Ascending 
+          </button>
+
+          {/* Descending  */}  
+          <button
+            className='bg-black p-4 hover:bg-gray-700'
+            type='button'
+            onClick={() => {this.setState({sort: 'desc'})}}
+          >
+            Descending
+          </button>
+
+          {/* Grid  */}  
+          <button
+            className='bg-black p-4 hover:bg-gray-700'
+            type='button'
+            onClick={() => {this.setState({type: 'grid'})}}
+          >
+            Grid
+          </button>
+
+          {/* List */}
+          <button
+            disabled
+            className='bg-black p-4 hover:bg-gray-700 disabled:cursor-not-allowed '
+            type='button'
+            onClick={() => {this.setState({type: 'list'})}}
+          > 
+            List
+          </button>
+
+          {/* Show All */}
+          <button
+            className='bg-gray-900 p-4 hover:bg-gray-700'
+            onClick={() => {this.setState({filteredIds: []})}}
+          >
+            Show All
+          </button>
+        </div>
+
         <Flipper
-          flipKey={`${this.state.type}-${this.state.sort}-${JSON.stringify(
-            this.state.filteredIds
-          )}-${JSON.stringify(this.state.stagger)}`}
+          flipKey={`${this.state.type}-${this.state.sort}-${JSON.stringify(this.state.filteredIds)}-${JSON.stringify(this.state.stagger)}`}
           spring={this.state.spring}
           staggerConfig={{
             default: {
-              reverse: this.state.stagger !== "forward",
+              reverse: this.state.stagger !== 'forward',
               speed: 1
             }
           }}
           decisionData={this.state}
         >
-          <div className="fm-flex-container">
-            <fieldset>
-              <legend>Sort</legend>
-              <label
-                onClick={() => {
-                  this.setState({
-                    sort: "asc"
-                  });
-                }}
-              >
-                <input
-                  type="radio"
-                  name="sort"
-                  checked={this.state.sort === "asc"}
-                />
-                asc
-              </label>
-              <label
-                onClick={() => {
-                  this.setState({
-                    sort: "desc"
-                  });
-                }}
-              >
-                <input
-                  type="radio"
-                  name="sort"
-                  checked={this.state.sort === "desc"}
-                />
-                desc
-              </label>
-            </fieldset>
-
-            <fieldset>
-              <legend>Type</legend>
-              <label
-                onClick={() => {
-                  this.setState({
-                    type: "grid"
-                  });
-                }}
-              >
-                <input
-                  type="radio"
-                  name="type"
-                  checked={this.state.type === "grid"}
-                />
-                grid
-              </label>
-              <label
-                onClick={() => {
-                  this.setState({
-                    type: "list"
-                  });
-                }}
-              >
-                <input
-                  type="radio"
-                  name="type"
-                  checked={this.state.type === "list"}
-                />
-                list
-              </label>
-            </fieldset>
-
-            <fieldset>
-              <legend>Stagger</legend>
-              <div className="fm-flex-container">
-                {["forward", "reverse", "none"].map(type => {
-                  return (
-                    <label>
-                      <input
-                        type="radio"
-                        name="stagger"
-                        checked={this.state.stagger === type}
-                        onChange={() => {
-                          this.setState({
-                            stagger: type,
-                            sort: this.state.sort === "asc" ? "desc" : "asc"
-                          });
-                        }}
-                      />
-                      {type}
-                    </label>
-                  );
-                })}
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Spring</legend>
-              {["stiff", "noWobble", "veryGentle", "gentle", "wobbly"].map(
-                type => {
-                  return (
-                    <label>
-                      <input
-                        type="radio"
-                        name="spring"
-                        checked={this.state.spring === type}
-                        onChange={() => {
-                          this.setState({
-                            spring: type,
-                            sort: this.state.sort === "asc" ? "desc" : "asc"
-                          });
-                        }}
-                      />
-                      {type}
-                    </label>
-                  );
-                }
-              )}
-            </fieldset>
-          </div>
-          <div>
-            {!!this.state.filteredIds.length && (
-              <button
-                className="fm-show-all"
-                onClick={() => {
-                  this.setState({
-                    filteredIds: []
-                  });
-                }}
-              >
-                show all cards
-              </button>
-            )}
-          </div>
-
-          <Flipped flipId="list">
-            <div className={this.state.type === "grid" ? "fm-grid" : "fm-list"}>
-              <Flipped inverseFlipId="list">
-                <ul className="list-contents">
+          <Flipped flipId='list'>
+            <div className={this.state.type === 'grid' ? 'fm-grid' : 'fm-list'}>
+              <Flipped inverseFlipId='list'>
+                <ul className='list-contents'>
                   {[...data]
                     .filter(d => !this.state.filteredIds.includes(d.id))
                     .sort((a, b) => {
-                      if (this.state.sort === "asc") {
+                      if (this.state.sort === 'asc') {
                         return a.id - b.id;
                       } else {
                         return b.id - a.id;
                       }
                     })
-                    .map(({ title, id }) => (
+                    .map(({ title, id, desc, src, tags, color }) => (
                       <Card
                         id={id}
                         title={title}
-                        stagger={["forward", "reverse"].includes(
-                          this.state.stagger
-                        )}
+                        desc={desc}
+                        src={src}
+                        tags={tags}
+                        color={color}
+                        stagger={['forward', 'reverse'].includes(this.state.stagger)}
                         type={this.state.type}
                         key={id}
                         addToFilteredIds={this.addToFilteredIds}
