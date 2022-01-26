@@ -25,7 +25,7 @@ export default class Grid extends Component {
       <div className='bg-black w-5/6 h-5/6 mt-7'>
 
         {/* Row of Buttons */}
-        <div className='inline-flex w-full bg-black'>
+        <div className='inline-flex flex-wrap w-full bg-black pb-4'>
           {/* Ascending  */}
           <button
             className='bg-black p-4 hover:bg-gray-700'

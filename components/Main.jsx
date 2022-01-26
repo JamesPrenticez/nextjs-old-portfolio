@@ -17,7 +17,7 @@ function Main() {
       </div>
 
       {/* Two */}
-      <div className='w-full h-screen flex justify-center' >
+      <div className='w-full h-full md:h-screen flex justify-center' >
         <Grid />
       </div>
 

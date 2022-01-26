@@ -69,7 +69,7 @@ class Card extends PureComponent {
                       delayUntil={flipId}
                     >
                       <button
-                        className="w-8 ml-auto bg-transparent cursor-pointer text-[2.2rem] text-red-600"
+                        className="w-8 ml-auto bg-transparent cursor-pointer text-[2.2rem] text-red-500"
                         onClick={() => addToFilteredIds(id)}
                       >
                         &times;
@@ -79,12 +79,12 @@ class Card extends PureComponent {
   
                   {/* Image */}
                   <div>
-                    <img className="h-full w-full m-auto rounded-sm p-4" src='/default-image.jpg' alt="" />
+                    <img className="h-full w-full m-auto rounded-sm px-4 py-3" src='/default-image.jpg' alt="" />
                   </div>
 
                   {/* SubTitle */}
-                  <div className="h-[4rem] ml-4">
-                    <p className="italic pb-2 text-gray-100 font-thin">{desc}</p>
+                  <div className="h-[4rem] px-4">
+                    <p className="italic text-gray-100 font-thin">{desc}</p>
                   </div>
 
                 </div>
