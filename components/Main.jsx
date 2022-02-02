@@ -1,4 +1,4 @@
-import Grid from './Grid';
+import PortfolioGrid from './PortfolioGrid';
 import TypeWriter from "./TypeWriter"
 
 
@@ -17,8 +17,8 @@ function Main() {
       </div>
 
       {/* Two */}
-      <div className='w-full h-full md:h-screen flex justify-center' >
-        <Grid />
+      <div className='w-full h-full md:h-screen'>
+        <PortfolioGrid />
       </div>
 
       {/* Three */}
@@ -31,15 +31,15 @@ function Main() {
               <legend className='text-4xl px-4'>Contact Me</legend>
 
               <div className='pl-4 space-y-4'>
-                <label className='' for="fname">First name:</label>
+                <label className='' htmlFor="fname">First name:</label>
                 <input type="text" id="fname" name="fname"/>
                 <br/>
 
-                <label for="lname">Last name:</label>
+                <label htmlFor="lname">Last name:</label>
                 <input type="text" id="lname" name="lname"/>
                 <br/>
 
-                <label for="email">Email:</label>
+                <label htmlFor="email">Email:</label>
                 <input type="email" id="email" name="email"/>
                 <br/>
 
