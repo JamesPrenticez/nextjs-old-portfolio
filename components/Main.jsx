@@ -1,31 +1,35 @@
 import PortfolioGrid from './PortfolioGrid';
 import TypeWriter from "./TypeWriter"
 
-
 function Main() {
   return (
     <main className='w-full flex flex-wrap justify-center'>
       {/* One */}
-      <div className='w-full h-screen p-4'>
+      <div className="w-full h-screen p-16 bg-[url('/mountain.png')] bg-right-bottom bg-no-repeat bg-[length:175%_35%] md:bg-[length:75%_50%] bg-[#002d49]/90">
         <div className='w-[6.5rem] h-[6.5rem]'>
-          <p className='text-7xl font-black absolute select-none text-green-600 mt-[0.8rem]'>J</p>
+          <p className='text-7xl font-black absolute select-none text-gray-500 mt-[0.8rem]'>J</p>
           <p className='text-7xl font-black absolute select-none mt-[0.8rem] ml-[0.3rem]'>J</p>
-          <p className='text-7xl font-black absolute select-none text-green-600 mt-[0.8rem] ml-[2.8rem] '>P</p>
+          <p className='text-7xl font-black absolute select-none text-gray-500 mt-[0.8rem] ml-[2.8rem] '>P</p>
           <p className='text-7xl font-black absolute select-none mt-[0.8rem] ml-[3.1rem]'>P</p>
         </div>
         <TypeWriter />
       </div>
 
       {/* Two */}
-      <div className='w-full h-full md:h-screen'>
+      <div className='w-full h-full md:h-screen bg-black'>
         <PortfolioGrid />
       </div>
 
       {/* Three */}
-      <div className='w-full h-screen flex flex-wrap md:inline-flex'>
+      <div className='w-full h-full md:h-screen bg-[#002d49]'>
+       
+      </div>
+
+      {/* Four */}
+      <div className='w-full h-screen flex flex-wrap md:inline-flex bg-black'>
 
         {/* Form */}
-        <div className='w-full md:w-1/2 p-8'>
+        <div className='w-full md:w-1/2 p-16'>
           <form className='' action="/">
             <fieldset className='border border-solid border-gray-300 p-8'>
               <legend className='text-4xl px-4'>Contact Me</legend>
@@ -58,7 +62,7 @@ function Main() {
         </div>
 
         {/* Map */}
-        <div className='w-full md:w-1/2 bg-map bg-cover bg-center bg-no-repeat'/>
+        <div className="w-full md:w-1/2 bg-[url('/map-black.png')] bg-cover bg-center bg-no-repeat"/>
       </div>
     </main>
   )

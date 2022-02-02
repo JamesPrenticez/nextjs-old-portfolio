@@ -14,7 +14,7 @@ function Item(props) {
     //console.log(isDragging);
     return (
       <motion.li 
-        className="flex relative flex-grow-1 items-center box-border bg-[#002d49] bg-opacity-80 text-white outline-none rounded-md list-none"
+        className="flex relative flex-grow-1 items-center box-border bg-[#002d49]/90 text-white outline-none rounded-md list-none"
         style={{
           touchAction: 'none',
           postion: 'relative',
@@ -30,7 +30,7 @@ function Item(props) {
               y: transform.y,
               scale: isDragging ? 1.05 : 1,
               zIndex: isDragging ? 1 : 0,
-              boxShadow: isDragging ? "0 0 0 1px rgba(255, 255, 255, 0.05), 0px 15px 15px 0 rgba(255, 255, 255, 0.25)" : undefined
+              boxShadow: isDragging ? "0 0 0 1px rgba(22, 163, 74, 0.05), 0px 0px 2px 2px rgba(255, 255, 255, 0.75)" : undefined
             } : {
             x: 0,
             y: 0,
@@ -111,28 +111,28 @@ export default function PortfolioGrid() {
       setItems((items) => arrayMove(items, items.findIndex((item) => item.id), shuffledArrayOfItems.findIndex((item) => item.id)))
     }
 
-    return (<>
-    <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow">
-      <button className="h-20 w-24 md:w-32 rounded-lg bg-red-500 mt-2 md:mt-4" onClick={() => addToFilteredIds('clone')}>
-        Clone
-      </button>
-      <button className="h-20 w-24 md:w-32 rounded-lg bg-green-500 " onClick={() => addToFilteredIds('database')}>
-        Database
-      </button>
-      <button className="h-20 w-24 md:w-32 rounded-lg bg-blue-500 " onClick={() => addToFilteredIds('crypto')}>
-        Crypto
-      </button>
-      <button className="h-20 w-24 md:w-32 rounded-lg bg-pink-500 " onClick={() => setFilteredIds([])}>
-        Show All
-      </button>
-      <button className="h-20 w-24 md:w-40 rounded-lg bg-orange-500 " onClick={() => sort()}>
-        Sort
-      </button>
-      <button className="h-20 w-24 md:w-32 rounded-lg bg-yellow-400 " onClick={() => shuffle()}>
-        Shuffle
-      </button>
-
-    </div>
+    return (
+    <>
+      <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow pb-4 mt-8 ">
+        <button className="h-16 w-24 md:w-32 rounded-lg bg-red-500 ml-2 mt-2 md:mt-4 md:ml-4" onClick={() => addToFilteredIds('clone')}>
+          Clone
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-green-500 " onClick={() => addToFilteredIds('database')}>
+          Database
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-blue-500 " onClick={() => addToFilteredIds('crypto')}>
+          Crypto
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-orange-500 " onClick={() => sort()}>
+          Sort
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => shuffle()}>
+          Shuffle
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-pink-500 " onClick={() => setFilteredIds([])}>
+          Show All
+        </button>
+      </div>
       <div className="flex justify-center items-center pt-4">
         <DndContext collisionDetection={closestCenter} sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
           <SortableContext strategy={rectSortingStrategy} items={items}>
