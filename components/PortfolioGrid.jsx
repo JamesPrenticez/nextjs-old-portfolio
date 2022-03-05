@@ -14,7 +14,7 @@ function Item(props) {
     //console.log(isDragging);
     return (
       <motion.li 
-        className="flex relative flex-grow-1 items-center box-border bg-[#002d49]/90 text-white outline-none rounded-md list-none"
+        className="flex relative flex-grow-1 items-center box-border bg-[#044268]/90 text-white outline-none rounded-md list-none"
         style={{
           touchAction: 'none',
           postion: 'relative',

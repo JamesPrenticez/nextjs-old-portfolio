@@ -14,24 +14,13 @@ module.exports = {
       "4xl": ['2.25rem', '2.75rem'],
       "5xl": ['3rem', '3.5rem'],
       "6xl": ['3.75rem', '4.25rem'],
-      "7xl": ['4.5rem', '5.2rem'],
+      "7xl": ['8rem', '8.25rem'],
     },
     extend: {
-      height:{
-        screenNav: "calc(100vh - 4rem)",
-      },
       fontFamily: {
+        sharpGrotesk: ['sharp grotesk'],
         roboto: ['Roboto'],
        },
-       gridTemplateRows: {
-        // Default only goes upto 6
-        '7': 'repeat(7, minmax(0, 1fr))',
-        '8': 'repeat(8, minmax(0, 1fr))',
-        '9': 'repeat(9, minmax(0, 1fr))',
-        '10': 'repeat(10, minmax(0, 1fr))',
-        '11': 'repeat(11, minmax(0, 1fr))',
-        '12': 'repeat(12, minmax(0, 1fr))'
-       }
     },
   },
   variants: {
