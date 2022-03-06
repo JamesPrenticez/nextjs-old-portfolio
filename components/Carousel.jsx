@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 
-function Carousel({data}) {
+function Carousel({images}) {
   const [index, setIndex] = useState(0)
   const delay = 4000
 
   useEffect(() => {
    const timeout = setTimeout(() => {
       setIndex((prevIndex) => 
-        prevIndex === cohorts.length - 1 ? 0 : prevIndex + 1
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
         )
     }, delay);
     return () => clearTimeout(timeout)
@@ -15,7 +15,7 @@ function Carousel({data}) {
 
   const goToPrevSlide = () => {
     if(index < 1){
-      index = cohorts.length -1
+      index = images.length -1
     } else {
       index--
     }
@@ -23,7 +23,7 @@ function Carousel({data}) {
   }
 
   const goToNextSlide = () => {
-    if(index === cohorts.length - 1){
+    if(index === images.length - 1){
       index = 0
     } else {
       index ++
@@ -39,10 +39,10 @@ function Carousel({data}) {
         className="w-full h-[500px] whitespace-nowrap transistion ease duration-1000"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} //Unfortunatly we can't use string interpolation in combination with tailwind JIT  
       >
-        {cohorts.map((cohort, index1) => (
+        {images.map((image, index) => (
           <img 
-            key={index1}
-            className="w-[500px] h-[500px] inline-block" src={cohort.src}
+            key={index}
+            className="w-[500px] h-[500px] inline-block" src={image}
           />
         ))}
       </div>
@@ -72,7 +72,7 @@ function Carousel({data}) {
 
         {/* Name */}
         <h1 className="text-5xl flex flex-grow items-center justify-center">
-          {cohorts[index]?.name} 
+          {images[index]?.name} 
         </h1>
 
         {/* Right Arrow */}
@@ -99,7 +99,7 @@ function Carousel({data}) {
 
       {/* Dots */}
         <div className="text-center">
-          {cohorts.map((_, index2) => (
+          {images.map((_, index2) => (
             <div 
             key={index2}
             onClick={() => setIndex(index2)} 

@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import Carousel from './Carousel';
 
 //import {data} from '../data';
 //import Carousel from './Carousel';
@@ -58,7 +59,7 @@ function Modal({item}){
                     <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                        {/* {item.desc} */}
                     </p>
-                    {/* <Carousel images={project.images}/> */}
+                    <Carousel images={item.images}/>
                 </div>
                 {/* Modal footer */}
                 <div className="flex justify-between items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">

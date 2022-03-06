@@ -46,7 +46,7 @@ const Hero = () => {
                   />
               </div>
           </div>
-          <div className='bg-[#c5d8e9] w-full h-2/6 text-black p-12'>
+          <div className='bg-gray-300 w-full h-2/6 text-black p-12'>
             <p className='text-xl'>
               I’m an Enspiral Dev Academy graduate on a journey to becoming a professional 
               <span className="before:block before:absolute before:-inset-1 before:-skew-y-1 mx-2 my-1 before:bg-blue-600 relative inline-block">

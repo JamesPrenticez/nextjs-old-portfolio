@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, useSortable, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
 
-import {data} from '../data';
-import Modal from "./Modal";
+import {data} from './data';
+import Modal from "./components/Modal";
 
 function Item(props) {
     const { id, title, desc, images, color } = props;
