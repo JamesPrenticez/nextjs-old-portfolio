@@ -49,14 +49,14 @@ const Hero = () => {
           <div className='bg-[#c5d8e9] w-full h-2/6 text-black p-12'>
             <p className='text-xl'>
               I’m an Enspiral Dev Academy graduate on a journey to becoming a professional 
-              <span class="before:block before:absolute before:-inset-1 before:-skew-y-1 mx-2 my-1 before:bg-blue-600 relative inline-block">
+              <span className="before:block before:absolute before:-inset-1 before:-skew-y-1 mx-2 my-1 before:bg-blue-600 relative inline-block">
               <span className='font-bold italic relative text-white'>full stack web developer.</span>
               </span>
               I have a keen interest in working with databases and transforming that data into an unforgettable user experience.
             </p>
             <button 
               className='bg-gray-700 py-4 px-4 text-white mt-10 cursor-pointer'
-              onClick={console.log('downloadCV')}
+              onClick={() => console.log('downloadCV')}
             >
               View Resume
             </button>

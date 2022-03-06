@@ -4,7 +4,6 @@ import Head from 'next/head'
 import PortfolioGrid from '../components/PortfolioGrid';
 import Footer from '../components/Footer'
 import Hero from '../components/Hero';
-import Header from '../components/Header';
 
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
           {/* Section One */}
           <Hero />
 
-
           {/* Two */}
           <div className='w-full h-full md:h-screen bg-black'>
             <PortfolioGrid />
@@ -26,8 +24,7 @@ export default function Home() {
 
           {/* Three */}
           <div className='w-full h-full md:h-screen bg-[#044268]'>
-          <h1>Skills</h1>
-          <p>3js</p>
+            
           </div>
 
           {/* Four */}
