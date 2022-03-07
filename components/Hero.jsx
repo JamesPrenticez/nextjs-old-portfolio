@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import Typewriter from "./Typewriter"
 import Header from './Header'
 
 const Hero = () => {
