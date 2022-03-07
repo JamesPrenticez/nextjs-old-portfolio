@@ -2,20 +2,25 @@ import { useEffect, useState } from "react"
 
 function Carousel({images}) {
   const [index, setIndex] = useState(0)
-  const delay = 4000
+  //const delay = 4000
 
-  useEffect(() => {
-   const timeout = setTimeout(() => {
-      setIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        )
-    }, delay);
-    return () => clearTimeout(timeout)
-  },[index]);
+  //Reset index when image props change..
+  useEffect(()=>{
+    images ? setIndex(0) : ""
+  }, [images])
+
+  // useEffect(() => {
+  //  const timeout = setTimeout(() => {
+  //     setIndex((prevIndex) => 
+  //       prevIndex === images?.length - 1 ? 0 : prevIndex + 1
+  //       )
+  //   }, delay);
+  //   return () => clearTimeout(timeout)
+  // },[index]);
 
   const goToPrevSlide = () => {
     if(index < 1){
-      index = images.length -1
+      index = images?.length -1
     } else {
       index--
     }
@@ -23,7 +28,7 @@ function Carousel({images}) {
   }
 
   const goToNextSlide = () => {
-    if(index === images.length - 1){
+    if(index === images?.length - 1){
       index = 0
     } else {
       index ++
@@ -32,27 +37,26 @@ function Carousel({images}) {
   }
 
   return (
-    <div className="border-2 border-gray-300 rounded-sm overflow-hidden">
-      {/* Slideshow */}
-      {/* We want to move the position of slideshow by 0% when index is 0, -100% when index is 1 and by -200% when index is 2 so on so forth. */}
-      <div
-        className="w-full h-[500px] whitespace-nowrap transistion ease duration-1000"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} //Unfortunatly we can't use string interpolation in combination with tailwind JIT  
-      >
-        {images.map((image, index) => (
-          <img 
-            key={index}
-            className="w-[500px] h-[500px] inline-block" src={image}
-          />
-        ))}
-      </div>
-
-      {/* Lower Container */}
-      <div className="w-full h-20 flex">
+    <div className="flex justify-center w-full flex-wrap ">
+      <div className="relative flex justify-center overflow-hidden w-full h-[500px] ">
+        {/* Slideshow */}
+        {/* We want to move the position of slideshow by 0% when index is 0, -100% when index is 1 and by -200% when index is 2 so on so forth. */}
+        <div
+          className="whitespace-nowrap transistion ease duration-1000 "
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} //Unfortunatly we can't use string interpolation in combination with tailwind JIT  
+        >
+          {images?.map((image, index) => (
+              <img 
+                key={index}
+                className="object-contain w-full h-full inline-block border-none outline-none" src={image}
+                
+              />
+          ))}
+        </div>
         {/* Left Arrow */}
         <div
           onClick={() => goToPrevSlide()}
-          className="w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full"
+          className="absolute bottom-[45%] left-0 w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,15 +74,10 @@ function Carousel({images}) {
           </svg>
         </div>
 
-        {/* Name */}
-        <h1 className="text-5xl flex flex-grow items-center justify-center">
-          {images[index]?.name} 
-        </h1>
-
         {/* Right Arrow */}
         <div
           onClick={() => goToNextSlide()}
-          className="w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full ml-auto"
+          className="absolute bottom-[45%] right-0 w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full ml-auto"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,19 +94,19 @@ function Carousel({images}) {
             />
           </svg>
         </div>
-      </div>
 
+    </div>
       {/* Dots */}
-        <div className="text-center">
-          {images.map((_, index2) => (
+        <div className="text-center pt-4">
+          {images?.map((_, index2) => (
             <div 
             key={index2}
             onClick={() => setIndex(index2)} 
-            className={`inline-block h-[20px] w-[20px] border rounded-full hover:cursor-pointer m-2 transistion ease duration-500 ${index === index2 ? 'bg-red-600' : 'bg-gray-300'}` }></div>
+            className={`inline-block h-[20px] w-[20px] rounded-full hover:cursor-pointer m-2 transistion ease duration-500 ${index === index2 ? 'bg-sky-500' : 'bg-gray-300'}` }></div>
           ))}
          </div>
-    </div>
-  );
+  </div>
+  )
 }
 
 export default Carousel

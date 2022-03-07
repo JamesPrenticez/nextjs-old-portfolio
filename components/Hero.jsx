@@ -37,7 +37,8 @@ const Hero = () => {
             </div>
             <div className='w-3/5 h-full object-contain relative mx-auto'>
                 <Image
-                  //loader={myLoader}
+                  priority={true}
+                  as="image" 
                   src="/me.png"
                   alt="Picture of the author"
                   layout="fill"
@@ -56,7 +57,7 @@ const Hero = () => {
             </p>
             <button 
               className='bg-gray-700 py-4 px-4 text-white mt-10 cursor-pointer'
-              onClick={() => console.log('downloadCV')}
+              onClick={() => alert("Please Email me for a copy jamesprenticez@gmail.com =)")}
             >
               View Resume
             </button>

@@ -20,7 +20,10 @@ module.exports = {
       fontFamily: {
         sharpGrotesk: ['sharp grotesk'],
         roboto: ['Roboto'],
-       },
+      },
+      backgroundImage: {
+        'radial-gradient-blue': 'radial-gradient(circle, rgba(37,99,235,1) 0%, rgba(56,189,248,1) 100%)',
+      }
     },
   },
   variants: {

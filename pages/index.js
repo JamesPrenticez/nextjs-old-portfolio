@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>James' Portfolio</title>
+        <title>James&apos; Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main className='w-full flex flex-wrap justify-center'>
@@ -18,20 +18,20 @@ export default function Home() {
           <Hero />
 
           {/* Two */}
-          <div className='w-full h-full md:h-screen bg-black'>
+          <div className='w-full h-full min-h-screen bg-black'>
             <PortfolioGrid />
           </div>
 
           {/* Three */}
-          <div className='w-full h-full md:h-screen bg-[#044268]'>
-            
+          <div className='w-full h-full md:h-screen bg-blue-700'>
+            Skill Section - Work in Progress
           </div>
 
           {/* Four */}
           <div className='w-full h-screen flex flex-wrap md:inline-flex bg-black'>
 
             {/* Form */}
-            <div className='w-full md:w-1/2 p-16'>
+            {/* <div className='w-full md:w-1/2 p-16'>
               <form className='' action="/">
                 <fieldset className='border border-solid border-gray-300 p-8'>
                   <legend className='text-4xl px-4'>Contact Me</legend>
@@ -61,10 +61,10 @@ export default function Home() {
                   </div>
                 </fieldset>
                 </form>
-            </div>
+            </div> */}
 
             {/* Map */}
-            <div className="w-full md:w-1/2 bg-[url('/map-black.png')] bg-cover bg-center bg-no-repeat"/>
+            <div className="w-full bg-contain bg-[url('/map-black.png')] bg-center bg-no-repeat"/>
           </div>
         </main>
       <Footer/>
