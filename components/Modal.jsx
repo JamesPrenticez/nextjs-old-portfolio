@@ -1,16 +1,16 @@
+import Link from 'next/link';
 import React, {useRef, useEffect} from 'react'
 import Carousel from './Carousel';
 
 function Modal({item, modalIsOpen, toggleModalIsOpen}){
   const modalContent = useRef(null);
-  console.log(item)
 
-  useEffect(() => {
-    if (modalIsOpen) {
-      modalContent.current.focus()
-    }
-  }, [modalIsOpen]);
-  console.log(modalContent.current)
+  // useEffect(() => {
+  //   if (modalIsOpen) {
+  //     modalContent.current.focus()
+  //   }
+  // }, [modalIsOpen]);
+  console.log(item.tech)
 
   return (
       <div
@@ -18,16 +18,23 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
       >
         {/* Modal content  */}
         <div
-          tabIndex={0} //required to make a div foucusable
-          ref={modalContent}
+          //tabIndex={0} //required to make a div foucusable
+          //ref={modalContent}
           className="relative rounded-lg shadow bg-gray-700 w-full max-w-7xl md:h-auto focus:ring-none"
           onBlur={() => toggleModalIsOpen(false)}
         >
           {/* Modal header */}
           <div className="flex justify-between items-center p-5 rounded-t border-b border-gray-600">
-            <h3 className="text-3xl font-medium text-white">
-              {item.title}
-            </h3>
+            <div className='inline-flex items-center space-x-4 text-3xl font-medium text-white'>
+              <h3 className="">
+                {item.title}
+              </h3>
+              <Link href={item.link || item.video || ""} passHref>
+                <a target={'_blank'} className="text-2xl text-sky-500 underline cursor-pointer">
+                  {item.link || item.video}
+                </a>
+              </Link>
+            </div>
             <button
               type="button"
               className="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:bg-gray-600 hover:text-white"
@@ -49,10 +56,17 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
           </div>
           {/* Modal body */}
           <Carousel images={item?.images}/>
-          <div className="p-6 space-y-6">
-            <p className="text-base leading-relaxed text-gray-400">
+          <div className="p-6 space-y-6 text-xl leading-relaxed text-white">
+            <p className="">
               {item.desc}
             </p>
+            <ul className='inline-flex space-x-2'>
+              {item.tech?.map((item, index) => (
+               <li className='bg-sky-500 p-2 rounded-md' key={index}>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           {/* Modal footer */}
           <div className="flex justify-between items-center p-6 space-x-2 rounded-b border-t border-gray-600">
