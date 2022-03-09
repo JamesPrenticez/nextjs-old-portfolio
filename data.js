@@ -35,9 +35,9 @@ export const data = [
   {
     id: 4,
     title: "Egyptian NFT's",
-    desc: "Mint a hero and fight the boss in a turn based card game https://rinkeby.etherscan.io/address/0x4b8A189189f8c1d3B3E7bDE7E6B32004580D3889",
+    desc: "Mint a hero and fight the boss in a turn based card game https://rinkeby.etherscan.io/address/0x4b8A189189f8c1d3B3E7bDE7E6B32004580D3889 https://testnets.opensea.io/assets/0x4b8A189189f8c1d3B3E7bDE7E6B32004580D3889/1",
     tech: ["Next.js", "Solidity", "Hardhat", "Open Zeppelin", "Ethers", "Rinkeby Testnet"],
-    images: ["/img/egyptian0.png"],
+    images: ["/img/egyptian0.png", "/img/egyptian1.png", "/img/egyptian2.png", "/img/egyptian3.png", "/img/egyptian4.png", "/img/egyptian5.png"],
     link: "",
     video: "",
     tags: ["all", "hobby", "crypto"],

@@ -20,7 +20,7 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
         <div
           //tabIndex={0} //required to make a div foucusable
           //ref={modalContent}
-          className="relative rounded-lg shadow bg-gray-700 w-full max-w-7xl md:h-auto focus:ring-none"
+          className="relative rounded-lg shadow bg-gray-700 w-full max-w-[60vw] h-[90vh] focus:ring-none"
           onBlur={() => toggleModalIsOpen(false)}
         >
           {/* Modal header */}

@@ -6,7 +6,9 @@ function Carousel({images}) {
 
   //Reset index when image props change..
   useEffect(()=>{
-    images ? setIndex(0) : ""
+    return () => {
+      setIndex(0)
+    }
   }, [images])
 
   // useEffect(() => {
@@ -38,7 +40,7 @@ function Carousel({images}) {
 
   return (
     <div className="flex justify-center w-full flex-wrap ">
-      <div className="relative flex justify-center overflow-hidden w-full h-[500px] ">
+      <div className="relative flex justify-center overflow-hidden w-full h-[60vh] ">
         {/* Slideshow */}
         {/* We want to move the position of slideshow by 0% when index is 0, -100% when index is 1 and by -200% when index is 2 so on so forth. */}
         <div
