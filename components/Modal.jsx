@@ -10,7 +10,7 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
   //     modalContent.current.focus()
   //   }
   // }, [modalIsOpen]);
-  console.log(item.tech)
+  //console.log(item.tech)
 
   return (
       <div

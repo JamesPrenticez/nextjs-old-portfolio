@@ -11,7 +11,6 @@ export default function Home() {
     <>
       <Head>
         <title>James&apos; Portfolio</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
         <main className='w-full flex flex-wrap justify-center'>
           {/* Section One */}
