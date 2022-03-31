@@ -39,26 +39,29 @@ function Carousel({images}) {
   }
 
   return (
-    <div className="flex justify-center w-full flex-wrap ">
-      <div className="relative flex justify-center overflow-hidden w-full h-[60vh] ">
+    <div className="relative flex justify-center h-full w-full flex-wrap">
+      <div className=" flex justify-center overflow-hidden w-full h-full ">
         {/* Slideshow */}
         {/* We want to move the position of slideshow by 0% when index is 0, -100% when index is 1 and by -200% when index is 2 so on so forth. */}
         <div
           className="whitespace-nowrap transistion ease duration-1000 "
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} //Unfortunatly we can't use string interpolation in combination with tailwind JIT  
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }} //Unfortunatly we can't use string interpolation in combination with tailwind JIT
         >
           {images?.map((image, index) => (
-              <img 
-                key={index}
-                className="object-contain w-full h-full inline-block border-none outline-none" src={image}
-                
-              />
+            <img
+              key={index}
+              className="object-contain w-full h-full inline-block border-none outline-none"
+              src={image}
+            />
           ))}
         </div>
+      </div>
+
+
         {/* Left Arrow */}
         <div
           onClick={() => goToPrevSlide()}
-          className="absolute bottom-[45%] left-0 w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full"
+          className="absolute  left-0 w-16 h-full flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -76,10 +79,23 @@ function Carousel({images}) {
           </svg>
         </div>
 
+        {/* Dots */}
+        <div className="absolute bottom-0 text-center flex">
+          {images?.map((_, index2) => (
+            <div
+              key={index2}
+              onClick={() => setIndex(index2)}
+              className={`inline-block h-2 w-2 rounded-full hover:cursor-pointer m-2 transistion ease duration-500 ${
+                index === index2 ? "bg-sky-500" : "bg-gray-300"
+              }`}
+            ></div>
+          ))}
+        </div>
+
         {/* Right Arrow */}
         <div
           onClick={() => goToNextSlide()}
-          className="absolute bottom-[45%] right-0 w-20 h-20 flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000 rounded-full ml-auto"
+          className="absolute right-0 w-16 h-full flex items-center justify-center hover:cursor-pointer hover:bg-gray-500 hover:bg-opacity-20 transistion ease-in-out duration-1000"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,18 +113,9 @@ function Carousel({images}) {
           </svg>
         </div>
 
+      
     </div>
-      {/* Dots */}
-        <div className="text-center pt-4">
-          {images?.map((_, index2) => (
-            <div 
-            key={index2}
-            onClick={() => setIndex(index2)} 
-            className={`inline-block h-[20px] w-[20px] rounded-full hover:cursor-pointer m-2 transistion ease duration-500 ${index === index2 ? 'bg-sky-500' : 'bg-gray-300'}` }></div>
-          ))}
-         </div>
-  </div>
-  )
+  );
 }
 
 export default Carousel

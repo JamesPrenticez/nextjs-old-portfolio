@@ -14,19 +14,19 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
 
   return (
       <div
-        className={`${modalIsOpen ? "flex" : "hidden"} bg-black/80 overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 h-modal sm:h-full  `}
+        className={`${modalIsOpen ? "flex" : "hidden"} bg-black/80 overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-0 z-50 justify-center items-center md:inset-0`}
       >
         {/* Modal content  */}
         <div
           //tabIndex={0} //required to make a div foucusable
           //ref={modalContent}
-          className="relative rounded-lg shadow bg-gray-700 w-full max-w-[60vw] h-[90vh] focus:ring-none"
+          className="relative rounded-lg shadow bg-gray-700 w-full max-w-[60vw] focus:ring-none"
           onBlur={() => toggleModalIsOpen(false)}
         >
           {/* Modal header */}
           <div className="flex justify-between items-center p-5 rounded-t border-b border-gray-600">
             <div className='inline-flex items-center space-x-4 text-3xl font-medium text-white'>
-              <h3 className="">
+              <h3 className="h-full bg-yellow-300">
                 {item.title}
               </h3>
               <Link href={item.link || item.video || ""} passHref>
@@ -55,7 +55,11 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
             </button>
           </div>
           {/* Modal body */}
+          <div className='relative h-1/5 bg-red-500 w-full'>
           <Carousel images={item?.images}/>
+
+          </div>
+
           <div className="p-6 space-y-6 text-xl leading-relaxed text-white">
             <p className="">
               {item.desc}

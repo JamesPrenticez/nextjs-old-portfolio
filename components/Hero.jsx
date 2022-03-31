@@ -37,7 +37,7 @@ export default function Hero(){
 
       {/* Right */}
       <div className='absolute md:static w-full h-4/6 md:h-full md:inline-flex md:col-span-4 md:row-span-4 items-center bg-transparent md:bg-blue-600'>
-        <div ref={imgRef} className="absolute object-contain hidden md:flex items-end justify-center"> 
+        <div ref={imgRef} id="hero" className="absolute object-contain hidden md:flex items-end justify-center"> 
             <Image
               //loader={myLoader}
               //onLoadingComplete={(e) => handleImageLoad(e)}

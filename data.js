@@ -1,28 +1,6 @@
 export const data = [
   {
     id: 1,
-    title: "Developer.Blog",
-    desc: "This is a personal project developed as part of my portfolio project to show potential employers",
-    tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Draft.js", "React-hook-form"],
-    link: "https://blog-jamesprenticez.vercel.app/",
-    video: "",
-    images: ["/img/blog0.png", "/img/blog1.png", "/img/blog2.png", "/img/blog3.png", "/img/blog4.png", "/img/blog5.png", "/img/blog6.png",  "/img/blog7.png",],
-    tags: ["all", "hobby", "blog", "authentication"],
-    color: "radial-gradient(circle, rgba(255,0,255,1) 0%, rgba(171,0,255,1) 83%)"
-  },
-  {
-    id: 2,
-    title: "SelfRegulator",
-    desc: "Habit Tracking to do list with agregated data and statistics for the entire year",
-    tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Moment"],
-    link: "https://selfregulator-jamesprenticez.vercel.app/",
-    video: "",
-    images: ["/img/selfregulator0.png"],
-    tags: ["all", "database", "authentication"],
-    color: "radial-gradient(circle, rgba(0,255,29,1) 0%, rgba(159,255,0,1) 100%)",
-  },
-  {
-    id: 3,
     title: "Tea Time",
     desc: "Dev Academy Bootcamp Final Project. Group work with four other amazing people to create a MVP in 1 week. Automated solution to pick your favourite recipes for the week and generate a shopping list to buy all the ingrediants",
     tech: ["React", "Redux", "Express", "Knex", "Postgres/Sqlite3", "Jest"],
@@ -33,7 +11,18 @@ export const data = [
     color: "radial-gradient(circle, rgba(220,38,38,1) 0%, rgba(251,191,36,1) 100%)"
   },
   {
-    id: 4,
+    id: 2,
+    title: "Developer.Blog",
+    desc: "This is a personal project developed as part of my portfolio project to show potential employers",
+    tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Draft.js", "React-hook-form"],
+    link: "https://blog-jamesprenticez.vercel.app/",
+    video: "",
+    images: ["/img/blog0.png", "/img/blog1.png", "/img/blog2.png", "/img/blog3.png", "/img/blog4.png", "/img/blog5.png", "/img/blog6.png",  "/img/blog7.png",],
+    tags: ["all", "hobby", "blog", "authentication"],
+    color: "radial-gradient(circle, rgba(255,0,255,1) 0%, rgba(171,0,255,1) 83%)"
+  },
+  {
+    id: 3,
     title: "Egyptian NFT's",
     desc: "Mint a hero and fight the boss in a turn based card game https://rinkeby.etherscan.io/address/0x4b8A189189f8c1d3B3E7bDE7E6B32004580D3889 https://testnets.opensea.io/assets/0x4b8A189189f8c1d3B3E7bDE7E6B32004580D3889/1",
     tech: ["Next.js", "Solidity", "Hardhat", "Open Zeppelin", "Ethers", "Rinkeby Testnet"],
@@ -42,6 +31,17 @@ export const data = [
     video: "",
     tags: ["all", "hobby", "crypto"],
     color: "radial-gradient(circle, rgba(220,38,38,1) 0%, rgba(251,191,36,1) 100%)"
+  },
+  {
+    id: 4,
+    title: "SelfRegulator",
+    desc: "Habit Tracking to do list with agregated data and statistics for the entire year",
+    tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Moment"],
+    link: "https://selfregulator-jamesprenticez.vercel.app/",
+    video: "",
+    images: ["/img/selfregulator0.png"],
+    tags: ["all", "database", "authentication"],
+    color: "radial-gradient(circle, rgba(0,255,29,1) 0%, rgba(159,255,0,1) 100%)",
   },
   {
     id: 5,
