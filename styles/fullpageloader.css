@@ -1,0 +1,35 @@
+#full-page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 99999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .2s ease-in;
+  -webkit-transition: opacity .2s ease-in;
+  -moz-transition: opacity .2s ease-in;
+  -o-transition: opacity .2s ease-in;
+}
+
+#full-page-loader.hide {
+  opacity: 0;
+}
+
+#full-page-loader.hide svg {
+  -webkit-transform: scale(10);
+  -moz-transform: scale(10);
+  -o-transform: scale(10);
+  transform: scale(10);
+}
+
+#full-page-loader svg {
+  /* width: 80px; */
+  transition: transform .2s ease-in;
+  -webkit-transition: transform .2s ease-in;
+  -moz-transition: transform .2s ease-in;
+  -o-transition: transform .2s ease-in;
+}

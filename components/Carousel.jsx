@@ -49,6 +49,7 @@ function Carousel({images}) {
         >
           {images?.map((image, index) => (
             <img
+              //onBlurdataURL
               key={index}
               className="object-contain w-full h-full inline-block border-none outline-none"
               src={image}

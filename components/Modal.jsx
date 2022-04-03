@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, {useRef, useEffect} from 'react'
 import Carousel from './Carousel';
 
@@ -29,11 +28,9 @@ function Modal({item, modalIsOpen, toggleModalIsOpen}){
               <h3 className="h-full bg-yellow-300">
                 {item.title}
               </h3>
-              <Link href={item.link || item.video || ""} passHref>
-                <a target={'_blank'} className="text-2xl text-sky-500 underline cursor-pointer">
-                  {item.link || item.video}
-                </a>
-              </Link>
+              <a  href={item.link || item.video || ""} target={'_blank'} className="text-2xl text-sky-500 underline cursor-pointer">
+                {item.link || item.video}
+              </a>
             </div>
             <button
               type="button"

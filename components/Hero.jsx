@@ -8,12 +8,12 @@ export default function Hero(){
   const [height, setHeight] = useState();
 
   const setDimensions = () => {
-    const newHeight = imgRef.current.clientHeight;
+    const newHeight = imgRef?.current.clientHeight;
     setHeight(newHeight);
   };
   
   useEffect(() => {
-    setHeight(imgRef.current.clientHeight)
+    setHeight(imgRef?.current.clientHeight)
     window.addEventListener("resize", setDimensions);
   }, []);
 
