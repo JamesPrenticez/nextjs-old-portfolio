@@ -10,10 +10,7 @@ function MyApp({ Component, pageProps }) {
   //This is a fake preloader... Literally impossible in Next.js unless we attach some sort of data fetch... which we are not doing.
   useEffect(() => {
     setTimeout(() => {setLoading(false)}, 1000)
-    const removeLoader = () => {document.getElementById("full-page-loader").remove()}
-    return () => {
-      if(!loading) setTimeout(() => {removeLoader()}, 200)
-    }
+    if(!loading) setTimeout(() => {document.getElementById("full-page-loader").remove()}, 200)
   }, [loading])
 
   // This is another problem with SPA where you dont get a loading indicator when swaping routes... again only really effected by data fetching
