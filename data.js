@@ -25,7 +25,7 @@ export const data = [
     video: "",
     images: ["/projects/blog0.webp", "/img/blog1.png", "/img/blog2.png", "/img/blog3.png", "/img/blog4.png", "/img/blog5.png", "/img/blog6.png",  "/img/blog7.png",],
     img: {
-      src: "/projects/blog0.webp",
+      src: "/projects/blog.avif",
       alt: "Developer.Blog - Landing Page",
       width: 1500,
       height: 732,
@@ -40,7 +40,7 @@ export const data = [
     tech: ["Next.js", "Solidity", "Hardhat", "Open Zeppelin", "Ethers", "Rinkeby Testnet"],
     images: ["/projects/egyptian0.webp", "/img/egyptian1.png", "/img/egyptian2.png", "/img/egyptian3.png", "/img/egyptian4.png", "/img/egyptian5.png"],
     img: {
-      src: "/projects/egyptian0.webp",
+      src: "/projects/egyptian.avif",
       alt: "Egyptian NFT - Landing Page",
       width: 1500,
       height: 732,
@@ -59,7 +59,7 @@ export const data = [
     video: "",
     images: ["/projects/selfregulator0.webp"],
     img: {
-      src: "/projects/selfregulator0.webp",
+      src: "/projects/habit.avif",
       alt: "SelfRegulator - Landing Page",
       width: 1500,
       height: 732,
@@ -74,9 +74,9 @@ export const data = [
     tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Firebase"],
     link: "",
     video: "",
-    images: ["/img/default.png"],
+    images: ["/img/algo.avif"],
     img: {
-      src: "/projects/default.avif",
+      src: "/projects/algo.avif",
       alt: "Sorting Algorithim - Landing Page",
       width: 1919,
       height: 937,

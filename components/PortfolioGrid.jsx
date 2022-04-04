@@ -1,4 +1,3 @@
-// 1900 x 950 = 2:1 ratio
 import React, { useState } from "react";
 import Image from 'next/image'
 import { motion } from "framer-motion";
@@ -14,16 +13,10 @@ function Item(props) {
     const { attributes, setNodeRef, listeners, transform, isDragging } = useSortable({
         id,
         transition: null
-    });
-    console.log(img)
-    //console.log(isDragging);
-    // 1900 x 950 = 2:1 ratio
-    // 1500 x 1000 = 3:2 ratio 1.5x
-    // S10 360px x 760px
-    // S9 320px x 658px
+    })
     return (
       <motion.li 
-        className="relative w-full rounded-md bg-blue-600"
+        className="relative rounded-md bg-blue-600"
         style={{
           touchAction: 'none',
         }}
@@ -67,6 +60,15 @@ function Item(props) {
           </div> */}
 
           {/* Image - images[0]*/}
+                {/* <div className="relative h-full w-full rounded-md p-5 shadow-lg">
+                  <Image
+                      src={img.src}
+                      alt={img.alt}
+                      height={img.height}
+                      width={img.width}
+                      layout="intrinsic"
+                    />
+                </div> */}
                 <img
                   className="h-full w-full rounded-md p-5 shadow-lg"
                   src={img.src || "/default-image.jpg"}
@@ -75,28 +77,6 @@ function Item(props) {
                 <div className="flex items-center justify-center h-full w-full rounded-md absolute top-0 left-0 right-0 bottom-0 bg-blue-600 transition-opacity duration-1000 ease-out opacity-0 hover:opacity-90">
                   {title}
                 </div>
-            {/* <div 
-              className="group overflow-hidden relative w-full h-full shadow-sm bg-red-500"
-              style={{borderColor: 'transparent'}}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                height={img.height}
-                width={img.width}
-                layout="responsive"
-              />
-            </div> */}
-
-          {/* SubTitle */}
-          {/* <div className="h-[4rem] px-4">
-            <p className="italic text-gray-100 font-thin">{desc}</p>
-          </div> */}
-
-
-          {/* Open Modal/Show More */}
-          {/* <Modal props={props}/> */}
-        
       </motion.li>
     );
 }
@@ -152,13 +132,13 @@ export default function PortfolioGrid() {
         <button className="h-16 w-24 md:w-32 rounded bg-blue-500 " onClick={() => addToFilteredIds('crypto')}>
           Crypto
         </button>
-        <button className="h-16 w-24 md:w-32 rounded bg-orange-500 " onClick={() => sort()}>
+        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => sort()}>
           Sort
         </button>
-        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => shuffle()}>
+        <button className="h-16 w-24 md:w-32 rounded bg-orange-500 " onClick={() => shuffle()}>
           Shuffle
         </button>
-        <button className="h-16 w-24 md:w-32 rounded bg-pink-500 " onClick={() => setFilteredIds([])}>
+        <button className="h-16 w-24 md:w-32 rounded bg-fuchsia-500 " onClick={() => setFilteredIds([])}>
           Show All
         </button>
       </div>

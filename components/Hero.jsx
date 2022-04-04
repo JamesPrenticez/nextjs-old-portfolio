@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
-import Header from './Header'
 import TextEffect from './TextEffect'
 
 export default function Hero(){
@@ -19,8 +18,8 @@ export default function Hero(){
 
   return (
     <>
-      <section className="grid h-screen grid-cols-6 grid-rows-6 relative">
-    <Header />
+
+
       {/* Left */}
       <div className='inline-flex col-span-6 md:col-span-2 row-span-4 md:row-span-6 bg-blue-700'>
         <div className='inline-flex text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold h-4/6 items-center px-5 w-full'>
@@ -83,8 +82,6 @@ export default function Hero(){
             View Resume
           </button>
         </div>
-
-    </section>
   </>
   )
 }
