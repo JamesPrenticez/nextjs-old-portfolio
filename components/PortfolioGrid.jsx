@@ -1,130 +1,188 @@
-//https://www.youtube.com/watch?v=nyg5Lpl6AiM
+// 1900 x 950 = 2:1 ratio
+import React, { useState } from "react";
+import Image from 'next/image'
+import { motion } from "framer-motion";
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { SortableContext, useSortable, rectSortingStrategy, arrayMove } from "@dnd-kit/sortable";
+import TextEffect from "./TextEffect";
 
-import  React,{ useState, useEffect } from "react";
-import { data } from "../data";
-import { motion, AnimatePresence } from 'framer-motion'
-import { arrayMove } from "@dnd-kit/sortable";
-//import Modal from "./Modal";
+import {data} from '../data';
+// import Modal from "./components/Modal";
 
-import Modal from "./Modal";
-
-function PortfolioGrid() {
-  const [items, setItems] = useState(data);
-  const [filtered, setFiltered] = useState(items)
-  const [active, setActive] = useState('all')
-  
-  const [currentItem, setCurrentItem] = useState({})
-  const [modalIsOpen, toggleModalIsOpen] = useState(false)
-  
-
-  //Modal - Prevent scroll and set focus to allow for onBlur
-  useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '15px';
+function Item(props) {
+    const { id, title, desc, img, color } = props;
+    const { attributes, setNodeRef, listeners, transform, isDragging } = useSortable({
+        id,
+        transition: null
+    });
+    console.log(img)
+    //console.log(isDragging);
+    // 1900 x 950 = 2:1 ratio
+    // 1500 x 1000 = 3:2 ratio 1.5x
+    // S10 360px x 760px
+    // S9 320px x 658px
+    return (
+      <motion.li 
+        className="relative w-full rounded-md bg-blue-600"
+        style={{
+          touchAction: 'none',
+        }}
+        ref={setNodeRef}
+        tabIndex={0}
+        layoutId={id}
+        animate={transform 
+          ? {
+              x: transform.x,
+              y: transform.y,
+              scale: isDragging ? 1.05 : 1,
+              zIndex: isDragging ? 1 : 0,
+              boxShadow: isDragging ? "0 0 0 1px rgba(22, 163, 74, 0.05), 0px 0px 2px 2px rgba(255, 255, 255, 0.75)" : undefined
+            } : {
+            x: 0,
+            y: 0,
+            scale: 1
+          }}
       
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-      document.body.style.paddingRight = '0px';
-    };
-  }, [modalIsOpen]);
-
-
-  useEffect(() => {
-    if(active === 'all') setFiltered(items)
-    const filteredItems = items.filter((item) => item.tags.includes(active))
-    setFiltered(filteredItems)
-  }, [active])
-
-  function shuffle(){
-    let shuffledArrayOfItems = filtered.sort(() => Math.random() - 0.5) 
-    setFiltered((items) => arrayMove(items, items.findIndex((item) => item.id), shuffledArrayOfItems.findIndex((item) => item.id)))
-  }
-
-  function sort(){
-    let sortedArrayOfItems = filtered.sort((a, b) => { return a.id - b.id })
-    setFiltered((items) => arrayMove(items, items.findIndex((item) => item.id), sortedArrayOfItems.findIndex((item) => item.id)))
-  }
-
-  const buttonStyle = "w-full h-full text-blue-700 hover:text-white font-bold py-8 hover:bg-blue-700 w-full bg-gray-300" 
-  return (
-    <div className="min-h-screen bg-black p-8">
-      <Modal 
-        item={currentItem}
-        modalIsOpen={modalIsOpen}
-        toggleModalIsOpen={toggleModalIsOpen}
-      /> 
-      {/* Filter Buttons */}
-      <div className="grid grid-cols-5 lg:grid-cols-10 gap-[0.15rem] bg-blue-700 justify-between flex-wrap w-full border-t-[0.15rem] border-b-[0.15rem] border-blue-700">
-        <button onClick={() => setActive('group')} className={`${buttonStyle} ${active === 'group' ? '!bg-blue-700 !text-white' : ''}`}>Group</button>
-        <button onClick={() => setActive('hobby')} className={`${buttonStyle} ${active === 'hobby' ? '!bg-blue-700 !text-white' : ''}`}>Hobby</button>
-        <button onClick={() => setActive('clone')} className={`${buttonStyle} ${active === 'clone' ? '!bg-blue-700 !text-white' : ''}`}>Clone</button>
-        <button onClick={() => setActive('database')} className={`${buttonStyle} ${active === 'database' ? '!bg-blue-700 !text-white' : ''}`}>Database</button>
-        <button onClick={() => setActive('authentication')} className={`${buttonStyle} ${active === 'authentication' ? '!bg-blue-700 !text-white' : ''}`}>Auth</button>
-        <button onClick={() => setActive('crypto')} className={`${buttonStyle} ${active === 'crypto' ? '!bg-blue-700 !text-white' : ''}`}>Crypto</button>
-        <button onClick={() => setActive('ecommerce')} className={`${buttonStyle} ${active === 'ecommerce' ? '!bg-blue-700 !text-white' : ''}`}>Ecom</button>
-        <button onClick={() => sort()} className={buttonStyle}>Sort</button>
-        <button onClick={() => shuffle()} className={buttonStyle}>Shuffle</button>
-        <button onClick={() => setActive('all')} className={`${buttonStyle} ${active === 'all' ? '!bg-blue-700 font-extrabold !text-white' : ''}`}>All</button>
-      </div>
-
-      <div>
-        <motion.div layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 mt-4 overflow-hidden"
-          >
-          {/* Post Display Card */}
-          <AnimatePresence>
-          {filtered.map((item) => {
-            return (
-                <motion.div
-                  layout
-                  key={item.id}
-                  animate = {{ opacity: 1}}
-                  initial = {{ opacity: 0}}
-                  exit = {{ opacity: 0}}
-                  className="p-[2px] rounded-lg"
-                  style={{backgroundImage: item.color || 'red'}}
-                >
-                  <div className="overflow-hidden rounded-lg ">
-                    <div 
-                      className="group overflow-hidden border-b-2"
-                      style={{borderColor: 'transparent'}}
-                      >
-                      <img
-                        className="object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
-                        src={item.images[0] || "/default-image.jpg"}
-                        onClick={() => (setCurrentItem(item), toggleModalIsOpen(true))}
-                        />
-                    </div>
-
-                    <div className="p-2 h-[6rem] bg-black ">
-                      <div 
-                        className="bg-clip-text flex justify-between items-center"
-                        style={{backgroundImage: item.color}}
-                        >
-                        <p className="text-[1.125rem] font-bold text-transparent ">{item.title}</p>
-                        
-                        <p 
-                          className="text-sm text-white hover:text-transparent cursor-pointer"
-                          onClick={() => (setCurrentItem(item), toggleModalIsOpen(true))}
-                        >
-                          Show More
-                        </p>
-                      </div>
-                        <p className="text-[1rem] text-white">{item.desc}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            }
-            )}
-          </AnimatePresence>
-        </motion.div>
+        transition={{
+          duration: !isDragging ? 0.25 : 0,
+          easings: {
+              type: "spring"
+          },
+          scale: {
+              duration: 0.25
+          },
+          zIndex: {
+              delay: isDragging ? 0 : 0.25
+          }
+        }}
         
-        </div>
-    </div>
-  );
+        {...attributes}
+        {...listeners}
+      >
+
+          {/* Small Dot */}
+          {/* <div className="flex w-full px-2">
+            <div className="w-4 h-4 m-2 rounded-full" style={{background: color}}></div>
+            <h3 className="text-xl">{title}</h3>
+          </div> */}
+
+          {/* Image - images[0]*/}
+                <img
+                  className="h-full w-full rounded-md p-5 shadow-lg"
+                  src={img.src || "/default-image.jpg"}
+                  alt=''
+                  />
+                <div className="flex items-center justify-center h-full w-full rounded-md absolute top-0 left-0 right-0 bottom-0 bg-blue-600 transition-opacity duration-1000 ease-out opacity-0 hover:opacity-90">
+                  {title}
+                </div>
+            {/* <div 
+              className="group overflow-hidden relative w-full h-full shadow-sm bg-red-500"
+              style={{borderColor: 'transparent'}}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                height={img.height}
+                width={img.width}
+                layout="responsive"
+              />
+            </div> */}
+
+          {/* SubTitle */}
+          {/* <div className="h-[4rem] px-4">
+            <p className="italic text-gray-100 font-thin">{desc}</p>
+          </div> */}
+
+
+          {/* Open Modal/Show More */}
+          {/* <Modal props={props}/> */}
+        
+      </motion.li>
+    );
 }
 
-export default PortfolioGrid;
+export default function PortfolioGrid() {    
+    const [items, setItems] = useState(data)
+    const [filteredIds, setFilteredIds] = useState([])
+    const [activeId, setActiveId] = useState(null)//being dragged
+
+    const sensors = useSensors(useSensor(PointerSensor));
+
+    function handleDragStart({ active }){
+        //console.log(active);
+        setActiveId(active.id);
+    }
+
+    function handleDragEnd({ over }){
+        //console.log(over)
+        // const a = items.findIndex((item) => item.id === activeId);
+        // const b = items.findIndex((item) => item.id === over.id)
+        setItems((items) => arrayMove(items, items.findIndex((item) => item.id === activeId), items.findIndex((item) => item.id === over.id)))
+        setActiveId(null);
+    }
+
+    function addToFilteredIds(word){
+      let newArrayOfItems = items.filter(item => item.tags.includes(word) === false)
+      let newArrayOfItemIds = newArrayOfItems.map(item => item.id)
+      setFilteredIds(newArrayOfItemIds)
+    }
+
+    function sort(){
+      let sortedArrayOfItems = items.sort((a, b) => { return a.id - b.id })
+      setItems((items) => arrayMove(items, items.findIndex((item) => item.id), sortedArrayOfItems.findIndex((item) => item.id)))
+    }
+
+    function shuffle(){
+      let shuffledArrayOfItems = items.sort(() => Math.random() - 0.5) 
+      setItems((items) => arrayMove(items, items.findIndex((item) => item.id), shuffledArrayOfItems.findIndex((item) => item.id)))
+    }
+
+    return (
+    <div className="p-10">
+    <div className="flex w-full justify-center text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold">
+      <TextEffect text={"Portfolio"}/>
+    </div>
+    <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow pb-2 mt-2 ">
+        <button className="h-16 w-24 md:w-32 rounded-lg bg-red-500 ml-2 mt-2 md:mt-4 md:ml-4" onClick={() => addToFilteredIds('group')}>
+          Group
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-green-500 " onClick={() => addToFilteredIds('database')}>
+          Database
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-blue-500 " onClick={() => addToFilteredIds('crypto')}>
+          Crypto
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-orange-500 " onClick={() => sort()}>
+          Sort
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => shuffle()}>
+          Shuffle
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-pink-500 " onClick={() => setFilteredIds([])}>
+          Show All
+        </button>
+      </div>
+      <div className="flex justify-center items-center pt-4 ">
+        {/* <DndContext collisionDetection={closestCenter} sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}> */}
+          <SortableContext strategy={rectSortingStrategy} items={items}>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 max-w-7xl">
+                  {[...items]
+                    .filter(item => !filteredIds.includes(item.id))// if not in filtered list
+                    .map(({id, title, desc, img, color}) => (
+                      <Item
+                        id={id}
+                        key={id}
+                        title={title}
+                        desc={desc}
+                        img={img}
+                        color={color}
+                      />
+                    ))} 
+              </ul>
+          </SortableContext>
+        {/* </DndContext> */}
+      </div>
+    </div>
+  )
+}
+

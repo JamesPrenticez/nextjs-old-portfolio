@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero';
-import Preview from '../components/Preview';
 import PortfolioGrid from '../components/PortfolioGrid';
 import { data } from "../data";
 
@@ -15,20 +14,16 @@ export default function Home() {
           {/* Section One */}
           <Hero />
 
-          {/* Main Projects - Left - Tea Time, Right - Developer Blog,  Left - Egyptian NFT's */}
-          <div className='w-full h-full min-h-screen bg-black'>
-          {[...data]
-          .filter(project => project.id <= 3) //show first 3 projects only
-          .map((project) => (
-              <Preview key={project.id} project={project}/>
-            ))}
-          <PortfolioGrid />
-          </div>
-
-          {/* Three */}
-          <div className='w-full h-full md:h-screen bg-blue-700'>
+          {/* Skills */}
+          <div className='w-full h-full md:h-screen bg-blue-600'>
             Skill Section - Work in Progress
           </div>
+
+          {/* Portfolio */}
+          <div className='w-full h-full min-h-screen bg-blue-700'>
+            <PortfolioGrid />
+          </div>
+
 
           {/* Four */}
           <div className='w-full h-screen flex flex-wrap md:inline-flex bg-black'>
