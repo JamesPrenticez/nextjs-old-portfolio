@@ -13,7 +13,7 @@ import PortfolioGrid from "../components/PortfolioGrid";
 
 export default function Home() {
   const skillsRef = useRef(null)
-  const portfolioRef = useRef(null)
+  const projectsRef = useRef(null)
   const hobbiesRef = useRef(null)
 
   return (
@@ -25,7 +25,7 @@ export default function Home() {
 
           {/* Section One */}
           <section className="grid h-screen grid-cols-6 grid-rows-6 relative">
-            <Header skills={skillsRef} portfolio={portfolioRef} hobbies={hobbiesRef}/>
+            <Header skills={skillsRef} projects={projectsRef} hobbies={hobbiesRef}/>
             <Hero />
           </section>
 
@@ -35,12 +35,12 @@ export default function Home() {
           </section>
 
           {/* Portfolio */}
-          <section ref={portfolioRef}className="w-full h-full min-h-screen bg-blue-700">
+          <section ref={projectsRef}className="w-full h-full min-h-screen bg-blue-700">
             <PortfolioGrid />
           </section>
 
           {/* Hobbies */}
-          <section ref={hobbiesRef} className="w-full h-screen flex flex-wrap md:inline-flex bg-black">
+          <section ref={hobbiesRef} className="w-full h-screen flex flex-wrap md:inline-flex bg-blue-600">
             Hobbies
           </section>
 

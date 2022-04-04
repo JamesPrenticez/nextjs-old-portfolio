@@ -75,12 +75,7 @@ export default function Hero(){
             </span>
             I have a keen interest in working with databases and transforming that data into an unforgettable user experience.
           </p>
-          <button 
-            className='bg-gray-700 py-4 px-4 text-white cursor-pointer w-full md:w-auto'
-            onClick={() => alert("Please Email me for a copy jamesprenticez@gmail.com =)")}
-          >
-            View Resume
-          </button>
+          <a  className='bg-gray-700 py-4 px-4 text-white cursor-pointer w-full md:w-auto' href='/JPCV2022.pdf' download>Download Resume</a>
         </div>
   </>
   )

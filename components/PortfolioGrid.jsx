@@ -120,7 +120,7 @@ export default function PortfolioGrid() {
     return (
     <div className="p-10">
     <div className="flex w-full justify-center text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold">
-      <TextEffect text={"Portfolio"}/>
+      <TextEffect text={"Projects"}/>
     </div>
     <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow pb-2 mt-2 ">
         <button className="h-16 w-24 md:w-32 rounded-lg bg-red-500 ml-2 mt-2 md:mt-4 md:ml-4" onClick={() => addToFilteredIds('group')}>
@@ -132,11 +132,11 @@ export default function PortfolioGrid() {
         <button className="h-16 w-24 md:w-32 rounded bg-blue-500 " onClick={() => addToFilteredIds('crypto')}>
           Crypto
         </button>
-        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => sort()}>
-          Sort
-        </button>
         <button className="h-16 w-24 md:w-32 rounded bg-orange-500 " onClick={() => shuffle()}>
           Shuffle
+        </button>
+        <button className="h-16 w-24 md:w-32 rounded bg-yellow-400 " onClick={() => sort()}>
+          Sort
         </button>
         <button className="h-16 w-24 md:w-32 rounded bg-fuchsia-500 " onClick={() => setFilteredIds([])}>
           Show All
