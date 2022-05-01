@@ -6,7 +6,7 @@ import { SortableContext, useSortable, rectSortingStrategy, arrayMove } from "@d
 import TextEffect from "./TextEffect";
 
 import {data} from '../data';
-// import Modal from "./components/Modal";
+
 
 function Item(props) {
     const { id, title, desc, img, color } = props;

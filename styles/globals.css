@@ -22,6 +22,10 @@
     margin: 1.5em 10px !important;
     padding: 1em 10px !important;
   }
+
+  .odd div:nth-child(odd) {
+    background-color:#FF0000;
+  }      
 }
 
 @layer components{

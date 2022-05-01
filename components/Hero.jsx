@@ -67,7 +67,7 @@ export default function Hero(){
         </div>
 
         {/* Bottom*/}
-        <div className='bg-gray-300 col-span-6 md:col-span-4 row-span-2 text-black p-4 md:p-12 flex-col items-center'>
+        <div className='bg-gray-300 col-span-6 md:col-span-4 row-span-2 text-gray-700 p-4 md:p-12 flex-col items-center'>
           <p className='text-sm sm:text-xl md:text-xl py-10 md:py-5'>
             I&apos;m an Enspiral Dev Academy graduate on a journey to becoming a professional 
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-1 mx-2 my-1 before:bg-fuchsia-600 relative inline-block">

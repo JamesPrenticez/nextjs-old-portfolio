@@ -4,14 +4,7 @@ import Carousel from './Carousel';
 function Modal({item, modalIsOpen, toggleModalIsOpen}){
   const modalContent = useRef(null);
 
-  // useEffect(() => {
-  //   if (modalIsOpen) {
-  //     modalContent.current.focus()
-  //   }
-  // }, [modalIsOpen]);
-  //console.log(item.tech)
-
-  return (
+   return (
       <div
         className={`${modalIsOpen ? "flex" : "hidden"} bg-black/80 overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-0 z-50 justify-center items-center md:inset-0`}
       >

@@ -4,12 +4,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Hero from "../components/Hero";
 import PortfolioGrid from "../components/PortfolioGrid";
-
-
-  
-
-  
-<button > Click to scroll </button> 
+import Skills from "../components/Skills";
 
 export default function Home() {
   const skillsRef = useRef(null)
@@ -31,7 +26,7 @@ export default function Home() {
 
           {/* Skills */}
           <section ref={skillsRef}className="w-full h-full md:h-screen bg-blue-600">
-            Skill Section - Work in Progress
+            <Skills />
           </section>
 
           {/* Portfolio */}

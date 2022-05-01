@@ -102,3 +102,83 @@ export const data = [
     color: "radial-gradient(circle, rgba(37,99,235,1) 0%, rgba(56,189,248,1) 100%)"
   },
 ]
+
+export const techSkills = [
+  {
+    id: 1,
+    title: "HTML",
+    desc: "",
+    rating: 95,
+  },
+  {
+    id: 2,
+    title: "CSS",
+    desc: "",
+    rating: 95,
+  },
+  {
+    id: 3,
+    title: "JavaScript",
+    desc: "",
+    rating: 85,
+  },
+  {
+    id: 4,
+    title: "Relational Databases",
+    desc: "",
+    rating: 80,
+  },
+  {
+    id: 5,
+    title: "React/Next",
+    content: "I enjoy developing with the power of React at my fingertips I admire the virtual DOM, the elegance of reusable components and the logicality of JSX, on top of all of that I love the extension of Next.js for its out of the box routing, image optimization and ofcoure the speed the server side rendering offers.",
+    rating: 80,
+  },
+  {
+    id: 6,
+    title: "Python",
+    desc: "",
+    rating: 60,
+  },
+  {
+    id: 7,
+    title: "Algorithims",
+    desc: "",
+    rating: 50,
+  }
+]
+
+import { AnalyticalIcon, CommunicationIcon, IdeasIcon, ProblemSolvingIcon, TenacityIcon } from "./components/icons/common"
+
+export const softSkills = [
+  {
+    id: 1,
+    title: "Turning Idea into Reality",
+    content: "For me, taking a problem and finding a solution yields enormous satisfaction.",
+    icon: <IdeasIcon/>
+  },
+  {
+    id: 2,
+    title: "Tenacity",
+    content: "",
+    icon: <TenacityIcon/>
+  },
+  {
+    id: 3,
+    title: "Problem Solving",
+    content: "",
+    icon: <ProblemSolvingIcon/>
+  },
+  {
+    id: 4,
+    title: "Analytical",
+    content: "",
+    icon: <AnalyticalIcon/>
+  },
+  {
+    id: 4,
+    title: "Communicator",
+    content: "Writing code and build cool things is more about people than zeros and ones. I am at good listening to what people say, there needs and consearns. I like to collaborate and share ideas with the project team. I make sure all voices are heard and that every one its on the same page and upto date with the progress of a project. ",
+    icon: <CommunicationIcon/>
+  },
+]
