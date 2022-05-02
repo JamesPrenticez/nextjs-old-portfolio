@@ -9,16 +9,14 @@ export default function Skills() {
         {softSkills.map(skill => (
           <div 
             key={skill.id}
-            className='bg-gray-300 text-gray-700 p-4 rounded-md w-[49%] my-3 even:ml-auto shadow-lg'
+            className='bg-gray-100 text-gray-700 p-4 rounded-md w-[49%] my-3 even:ml-auto shadow-lg'
           >
             <h2 className='flex justify-between text-2xl'>
-              <span className='grow'>
-                {skill.title}
-              </span>
-              {skill.icon}
+              <span className='grow'>{skill.title}</span>
+              <span className='cursor-pointer'>{skill.icon}</span>
             </h2>
-            <p className='py-4'>
-              {skill.content}
+            <p className='py-4 '>
+              {skill.content} 
             </p>
             
           </div>

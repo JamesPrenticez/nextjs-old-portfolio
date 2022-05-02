@@ -25,9 +25,9 @@ module.exports = {
         sharpGrotesk: ['sharp grotesk'],
         roboto: ['Roboto'],
       },
-      backgroundImage: {
-        'radial-gradient-blue': 'radial-gradient(circle, rgba(37,99,235,1) 0%, rgba(56,189,248,1) 100%)',
-      }
+      minHeight:{
+        screenNav: "calc(100vh - 3.5rem)", // (nav 4rm) + (footer 4rem) + (main margin top/bottom 2rem)
+      },
     },
   },
   variants: {
