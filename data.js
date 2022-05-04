@@ -176,7 +176,7 @@ export const softSkills = [
     icon: <AnalyticalIcon/>
   },
   {
-    id: 4,
+    id: 5,
     title: "Communicator",
     content: "Writing code and build cool things is more about people than zeros and ones. I am at good listening to what people say, there needs and consearns. I like to collaborate and share ideas with the project team. I make sure all voices are heard and that every one its on the same page and upto date with the progress of a project. ",
     icon: <CommunicationIcon/>

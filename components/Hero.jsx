@@ -33,11 +33,15 @@ export default function Hero(){
               </p>
               <div className='flex mt-8 md:mt-12 space-x-4'>
               <NextLink href="https://www.linkedin.com/in/jamesprenticez/?originalSubdomain=nz" passHref>
-                  <GithubIcon className='h-8 w-8 md:h-12 md:w-12 cursor-pointer'/>
+                  <a>
+                    <GithubIcon className='h-8 w-8 md:h-12 md:w-12 cursor-pointer'/>
+                  </a>
                 </NextLink>
 
                 <NextLink href="https://www.linkedin.com/in/jamesprenticez/?originalSubdomain=nz" passHref>
-                  <LinkedInIcon className='h-8 w-8 md:h-12 md:w-12 cursor-pointer'/>
+                  <a>
+                    <LinkedInIcon className='h-8 w-8 md:h-12 md:w-12 cursor-pointer'/>
+                  </a>
                 </NextLink>
               </div>
 
