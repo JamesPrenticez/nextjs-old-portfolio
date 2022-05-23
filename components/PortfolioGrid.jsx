@@ -32,12 +32,17 @@ function Modal({selectedId, setSelectedId, item}){
   return (
   <motion.div 
     layoutId={selectedId}
-    className="bg-blue-600 rounded-md absolute z-50 top-[5%] left-[5%] w-[90%] h-[90%] p-6 border border-white"
+    className="bg-blue-600 rounded-md fixed z-50 top-[5%] left-[5%] w-[90%] h-[90%] p-6 border border-white"
   >
-    <motion.div onClick={() => setSelectedId(null)}>
+    <motion.div onClick={() => setSelectedId(null)} className="flex">
+      <motion.h2>{title}</motion.h2>
       <CrossIcon className="h-12 w-12 text-white ml-auto cursor-pointer"/>
     </motion.div>
-    <motion.h2>{title}</motion.h2>
+    <img
+        className="h-1/2 w-1/2"
+        src={img.src || "/default-image.jpg"}
+        alt=''
+    />
   </motion.div>
   )
 }
@@ -65,11 +70,11 @@ export default function PortfolioGrid() {
     }
 
     return (
-    <div className="min-h-screen relative">
-      <div className="flex w-full justify-center text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold p-10">
+    <div className="min-h-screen">
+      <div className="flex w-full justify-center text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl font-extrabold pt-10 pb-5 px-10 ">
         <TextEffect text={"Projects"}/>
       </div>
-      <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow pb-2 mt-2 ">
+      <div className="inline-flex flex-wrap justify-center space-x-2 space-y-2 md:space-x-4 md:space-y-4 w-full flex-grow pb-2">
         <button className="h-16 w-24 md:w-32 rounded-lg bg-red-500 ml-2 mt-2 md:mt-4 md:ml-4" onClick={() => addToFilteredIds('group')}>
           Group
         </button>

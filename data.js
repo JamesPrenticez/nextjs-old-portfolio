@@ -69,7 +69,7 @@ export const data = [
   },
   {
     id: 5,
-    title: "Sorting Algorithim Visuliser",
+    title: "Sorting Algorithim Visualizer",
     desc: "Post photos and have your friends like and comment", 
     tech: ["Next.js", "Redux", "Prisma", "Postgres/Sqlite3", "Firebase"],
     link: "",

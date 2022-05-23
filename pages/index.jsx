@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import Hero from "../components/Hero";
 import PortfolioGrid from "../components/PortfolioGrid";
 import Skills from "../components/Skills";
+import FramerCarousel from "../components/FramerCarousel";
 
 export default function Home() {
   const skillsRef = useRef(null)
@@ -35,7 +36,7 @@ export default function Home() {
 
           {/* Hobbies */}
           <section ref={hobbiesRef} className="w-full h-screen flex flex-wrap md:inline-flex bg-blue-600">
-            Hobbies
+            <FramerCarousel />
           </section>
 
           {/* Contact & Location */}

@@ -28,3 +28,8 @@ module.exports = {
     deviceSizes: [640, 768, 1024, 1280, 1536],
   }
 }
+
+### Draggable Carousel
+https://codesandbox.io/s/framer-motion-carousel-40xnd
+https://codesandbox.io/s/framer-motion-image-gallery-dx0pb?file=/src/Example.tsx
+https://codesandbox.io/s/framerx-carousel-0xt2u?file=/src/index.tsx:133-146
