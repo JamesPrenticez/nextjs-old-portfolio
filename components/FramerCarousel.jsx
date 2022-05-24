@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion"
+import { ChevronLeftIcon, ChevronRightIcon } from "./icons/common";
 
 const Items = ["teal", "tomato", "thistle", "aquamarine"]
 
@@ -32,7 +33,7 @@ export default function FramerCarousel() {
       <div className="flex w-full h-[60%] items-center justify-center space-x-4 overflow-hidden">
         <AnimateSharedLayout>
             <motion.div
-              className="h-full w-[250px] -translate-x-[250px] invisible"
+              className="h-full w-[250px] invisible"
               key={Items[prev]}
               layoutId={Items[prev]}
               style={{ background: Items[prev]}}
@@ -42,11 +43,8 @@ export default function FramerCarousel() {
 
 
           <div className="flex max-w-7xl w-[80rem] h-full overflow-hidden items-center space-x-4">
-            <button 
-              className="z-50 select-none"
-              onClick={() => paginate(-1)}
-            >
-              {"<"}
+            <button className="z-50 select-none" onClick={() => paginate(-1)}>
+              <ChevronLeftIcon className="h-12 w-12 bubble" />
             </button>
 
             {/* Middle */}
@@ -70,23 +68,25 @@ export default function FramerCarousel() {
 
               <div className="grid grid-cols-3 grid-rows-3 h-full w-full">
                 {arr.filter((item, index) => index >= (curr * 3) &&  index < (curr * 3 + 3)).map((item) =>(
-                  <div className="h-full w-full flex items-center justify-center border">{item}</div>
+                  <div
+                    key={item} 
+                    className="h-full w-full flex items-center justify-center border"
+                  >
+                    {item}
+                  </div>
                   ))}
               </div>
 
             </motion.div>
 
-            <button 
-              className="z-50 select-none"
-              onClick={() => paginate(1)}
-            >
-              {">"}
+            <button className="z-50 select-none" onClick={() => paginate(1)}>
+              <ChevronRightIcon className="h-12 w-12 bubble" />
             </button>
 
           </div>
 
           <motion.div
-            className="h-full w-[250px] translate-x-[250px] invisible"
+            className="h-full w-[250px] invisible"
             key={Items[next]}
             layoutId={Items[next]}
             style={{ background: Items[next] }}
