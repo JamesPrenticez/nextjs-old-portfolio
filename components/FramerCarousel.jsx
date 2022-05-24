@@ -3,6 +3,8 @@ import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion"
 
 const Items = ["teal", "tomato", "thistle", "aquamarine"]
 
+const arr = ["one", " two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
+
 function wrap(min, max, v) {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
@@ -25,10 +27,21 @@ export default function FramerCarousel() {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col h-full items-center justify-center p-12">
-        <AnimateSharedLayout>
-          <div className="flex w-full h-[80%] overflow-hidden items-center space-x-4">
+<div className="flex w-full h-full items-center">
 
+      <div className="flex w-full h-[60%] items-center justify-center space-x-4 overflow-hidden">
+        <AnimateSharedLayout>
+            <motion.div
+              className="h-full w-[250px] -translate-x-[250px] invisible"
+              key={Items[prev]}
+              layoutId={Items[prev]}
+              style={{ background: Items[prev]}}
+            >
+            {Items[prev]}
+          </motion.div> 
+
+
+          <div className="flex max-w-7xl w-[80rem] h-full overflow-hidden items-center space-x-4">
             <button 
               className="z-50 select-none"
               onClick={() => paginate(-1)}
@@ -36,30 +49,10 @@ export default function FramerCarousel() {
               {"<"}
             </button>
 
-            <motion.div
-              className="w-full h-[80%]"
-              key={Items[prev]}
-              layoutId={Items[prev]}
-              style={{ background: Items[prev] }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-                
-                if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1);
-                } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1);
-                }
-              }}
-            >
-              {Items[prev]}
-            </motion.div>
-
-
+            {/* Middle */}
             <motion.div
               key={Items[curr]}
-              className="w-full h-full cursor-pointer"
+              className=" w-full h-full cursor-pointer "
               layoutId={Items[curr]}
               style={{ background: Items[curr] }}
               drag="x"
@@ -74,38 +67,36 @@ export default function FramerCarousel() {
                 }
               }}
             >
-              {Items[curr]}
+
+              <div className="grid grid-cols-3 grid-rows-3 h-full w-full">
+                {arr.filter((item, index) => index >= (curr * 3) &&  index < (curr * 3 + 3)).map((item) =>(
+                  <div className="h-full w-full flex items-center justify-center border">{item}</div>
+                  ))}
+              </div>
+
             </motion.div>
 
+            <button 
+              className="z-50 select-none"
+              onClick={() => paginate(1)}
+            >
+              {">"}
+            </button>
+
+          </div>
+
           <motion.div
-            className="w-full h-[80%]"
+            className="h-full w-[250px] translate-x-[250px] invisible"
             key={Items[next]}
             layoutId={Items[next]}
             style={{ background: Items[next] }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={(e, { offset, velocity }) => {
-              const swipe = swipePower(offset.x, velocity.x);
-              
-              if (swipe < -swipeConfidenceThreshold) {
-                paginate(1);
-              } else if (swipe > swipeConfidenceThreshold) {
-                paginate(-1);
-              }
-            }}
           >
             {Items[next]}
           </motion.div>
-
-          <button 
-            className="z-50 select-none"
-            onClick={() => paginate(1)}
-          >
-            {">"}
-          </button>
-
-          </div>
+          
         </AnimateSharedLayout>
-    </div>
+      </div>
+      </div>
+
   )
 }
